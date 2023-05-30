@@ -1,0 +1,71 @@
+﻿@model EditRoleViewModel
+@{
+    ViewBag.Title = "Login User";
+}
+
+<h2 class="my-5 text-center">
+    Edit role
+</h2>
+<div class="my-5">
+
+
+    <form method="post">
+
+        <div class="mb-3">
+            <label asp-for="Id" class="form-label"></label>
+            <input asp-for="Id" class="form-control" disabled placeholder="Le prénom du employée...">
+         
+        </div>
+        <div class="mb-3">
+            <label asp-for="RoleName" class="form-label"></label>
+            <input asp-for="RoleName" class="form-control" placeholder="Le prénom du employée...">
+            <span class="small text-danger" asp-validation-for="RoleName">
+
+            </span>
+        </div>
+
+        @if(Model.Users.Count == 0)
+            {
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">List Users</h5>
+                        <p class="card-text">
+                            Any Users !
+                        </p>
+                        <div class="text-white">
+                            <a asp-action="EditUsersRole" asp-route-idRole="@Model.Id" class="btn btn-sm btn-primary">Add Users</a>
+                            <a class="btn btn-sm my-auto btn-secondary">Back To List</a>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">List Users</h5>
+                        <p class="card-text">
+                            @foreach (string userEmail in Model.Users)
+                            {
+                                @userEmail <br />
+                            }
+                        </p>
+                        <div class="text-white">
+                            <a asp-action="EditUsersRole" asp-route-idRole="@Model.Id" class="btn btn-sm btn-primary">Add Users</a>
+                            <a class="btn btn-sm my-auto btn-secondary">Back To List</a>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        <div class="mb-3">
+            <div class="col-12">
+                <button type="submit" class="btn btn-dark mx-3">Edit</button>
+                <a asp-action="ListRoles">Back To List</a>
+            </div>
+        </div>
+        <div class="text text-danger" asp-validation-summary="All"></div>
+
+    </form>
+
+</div>

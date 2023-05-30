@@ -1,0 +1,35 @@
+﻿@model AdministarationCreateRoleViewModel
+@{
+    ViewBag.Title = "Create new role ";
+}
+@{
+    var returnUrl = Context.Request.Query["ReturnUrl"];
+}
+<h2 class="my-5 text-center">
+    create new role
+</h2>
+<div class="my-5">
+
+
+    <form method="post">
+        <div class="mb-3">
+            <label asp-for="RoleName" class="form-label"></label>
+            <input asp-for="RoleName" class="form-control" placeholder="Le prénom du employée...">
+            <span class="small text-danger" asp-validation-for="RoleName">
+
+            </span>
+        </div>
+
+
+        <div class="mb-3">
+            <div class="col-12">
+                <button type="submit" class="btn btn-success">Create Role</button>
+
+            </div>
+        </div>
+        <div class="text text-danger" asp-validation-summary="All"></div>
+    </form>
+        
+
+
+</div>

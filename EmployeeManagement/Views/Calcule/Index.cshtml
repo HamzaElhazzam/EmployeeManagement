@@ -1,0 +1,42 @@
+﻿@model Calcule
+@{ 
+    ViewBag.Title = "calcule";
+}
+<div class="my-5">
+
+    <form asp-action="Index" asp-controller="Calcule">
+        <fieldset>
+            <legend>Calcule</legend>
+            <div class="mb-3">
+
+                <input type="text" asp-for="Num1" class="form-control" placeholder="">
+            </div>
+            <div class="mb-3">
+                <input type="text" asp-for="Num2"  class="form-control" placeholder="">
+            </div>
+
+            <div class="mb-3">
+                <input type="text" asp-for="Res" class="form-control" placeholder="Resultat">
+            </div>
+            <div class="mb-3">
+                <label>
+                    Soustraction
+                    <input type="radio" asp-for="calcule" value="option1" checked />
+                </label>
+                <label>
+                    Addition
+                    <input type="radio" asp-for="calcule" value="option2" />
+                </label>
+                <label>
+                    Multiplication
+                    <input type="radio" asp-for="calcule" value="option3" />
+
+                </label>
+
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </fieldset>
+    </form>
+
+</div>

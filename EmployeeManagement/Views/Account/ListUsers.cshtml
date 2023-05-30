@@ -1,0 +1,70 @@
+﻿@model IEnumerable<AppUser>
+@{ 
+    int counter = 1;
+    ViewBag.Title = "Users Managers";
+}
+<div class="my-5">
+    <span class="text-info fw-bold display-3 ">List Users</span>
+</div>
+<div class="my-5">
+    <table id="myTable" class="table">
+        <thead class=" table-hover table-dark">
+            <tr>
+                <td scope="col">
+                    #
+                </td>
+                @*hna drt ghir smiya dyal kola column*@
+                <td scope="col">
+                    @Html.DisplayNameFor(item => item.FirstName);
+                </td>
+                <td scope="col">
+                    @Html.DisplayNameFor(item => item.LastName);
+                </td>
+                <td scope="col">
+                    @Html.DisplayNameFor(item => item.Age);
+                </td>
+                <td scope="col">
+                    @Html.DisplayNameFor(item => item.Email);
+                </td>
+                <td scope="col">
+                    <span>Operations</span>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (AppUser user in Model)
+            {
+                <tr scope="row">
+                    <td scope="col">
+                        @counter
+                    </td>
+                    <td scope="col">@user.FirstName</td>
+                    <td scope="col">@user.LastName</td>
+                    <td scope="col">@user.Age</td>
+                    <td scope="col">@user.Email</td>
+                    <td scope="col">
+                        <form asp-action="DeleteUser" asp-controller="Account" asp-route-id="@user.Id" method="post">
+
+                            <a asp-action="EditUser" asp-controller="Account" asp-route-id="@user.Id" style="width:120px;" class="btn btn-dark mx-2 btn-sm">Edit</a>
+
+                            <button onclick="confirm('Are you sure to delete user: @user.Email')" type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                counter++;
+            }
+        </tbody>
+    </table>
+    <div class="my-3">
+        <a asp-action="Register" class="btn btn-sm btn-primary">Add New User</a>
+    </div>
+    <div class="my-3" asp-validation-summary="All"></div>
+
+</div>
+@section DtListUsers {
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+}

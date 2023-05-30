@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Error";
+}
+<div class="my-5">
+    <h1 class="display-4 text-danger">An occured while processing your request. The support team is notified and we are working on the fix</h1>
+    <p class="lead text-danger">
+        <span>
+            Message = @ViewBag.Message
+        </span> <br />
+        <span>
+            Path: @ViewBag.Path
+        </span>
+    </p>
+    <hr class="my-4" />
+    <p class="text-info text-center">
+        Please contact us on hamzaelhazzam15@gmail.com
+    </p>
+    <a asp-controller="Employee" asp-action="index" class="btn btn-outline-info">Back to Home</a>
+</div>

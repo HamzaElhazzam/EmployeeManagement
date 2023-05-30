@@ -1,0 +1,14 @@
+﻿@model string
+@{
+    ViewBag.Title = "Error";
+}
+<div class="my-5">
+    <h1 class="display-4 text-danger">An occured while processing your request. The support team is notified and we are working on the fix</h1>
+    <p class="lead">
+        @Model
+    </p>
+    <hr class="my-4" />
+    
+    <a asp-controller="Employee" asp-action="index" class="btn btn-outline-info">Back to Home</a>
+</div>
+@*hadi dyal edit user fash makayel9ach user b id dyalo kangolo lih sir notfound affichiha ou sift meaha message comme model, drnaha f shared hit qbel matexecuta view katmshi t9leb f shared hya lwla*@

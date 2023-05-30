@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Employee>
+@using System.Security.Claims;
+@{
+    ViewBag.Title = "liste des employes";
+}
+<p class="alert alert-info my-5 text-center">
+    Employees
+</p>
+<div class="row">
+    @foreach (Employee employee in Model)
+    {
+        
+        var x = employee.EmailUser;
+       
+        var photoPathName = "/images/" + (employee.PhotoPath ?? "emp.png");
+        <div class="col-12 col-sm-6 mb-2 col-lg-4">
+            <div class="card">
+                <center>
+                    <img asp-append-version="true" src="@photoPathName" style="width:70%; height:70%;" class="card-img-top" alt="@employee.Name" />
+
+                </center>
+                <div class="card-body text-center">
+                    <h5 class="card-title">@employee.Name</h5>
+                    <p class="card-text">
+                        @employee.Email
+                    </p>
+                    <div class="text-white">
+                        <a asp-controller="Employee" asp-action="Details" asp-route-id="@employee.Id" class="btn btn-sm btn-primary">Details</a>
+                        <a class="btn btn-sm btn-secondary" asp-controller="Employee" asp-action="Update" asp-route-id="@employee.Id">Update</a>
+                        <a class="btn btn-sm btn-danger" asp-controller="Employee" asp-action="Delete" asp-route-id="@employee.Id">Delete</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+    }
+
+</div>
+

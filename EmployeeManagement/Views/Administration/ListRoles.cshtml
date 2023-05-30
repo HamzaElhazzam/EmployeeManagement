@@ -1,0 +1,35 @@
+﻿@model IEnumerable<IdentityRole>
+@{
+    ViewBag.Title = "liste des employes";
+}
+<p class="alert alert-dark my-5 text-center">
+    List Roles
+</p>
+<hr />
+<a asp-action="CreateRole" class="btn btn-primary">Create new role</a>
+<hr />
+<div class="row">
+    @foreach (IdentityRole role in Model)
+    {
+        <div class="col-12 col-sm-6 mb-2 col-lg-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">@role.Id</h5>
+                    <p class="card-text">
+                        @role.Name
+                    </p>
+                    <div class="text-white">
+                        
+                        <form  asp-action="DeleteRole" asp-route-id="@role.Id" method="post">
+                            <a class="btn btn-sm btn-secondary" asp-action="Edit" asp-route-id="@role.Id">Update</a>
+                            <button class="btn btn-sm btn-danger" type="submit">Delete</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
+

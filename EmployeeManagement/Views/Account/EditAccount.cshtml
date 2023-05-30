@@ -1,0 +1,87 @@
+﻿@model EditAccountViewModel
+@{
+    ViewBag.Title = "Edit Account";
+}
+<div class="my-5">
+
+    <form  method="post">
+        <fieldset>
+            
+                <input hidden asp-for="Id" class="form-control" placeholder="Le prénom du employée...">
+                
+           
+            <div class="mb-3">
+                <label asp-for="FirstName" class="form-label"></label>
+                <input asp-for="FirstName" class="form-control" placeholder="Le prénom du employée...">
+                <span class="small text-danger" asp-validation-for="FirstName">
+
+                </span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="LastName" class="form-label"></label>
+                <input asp-for="LastName" class="form-control" placeholder="Le prénom du employée...">
+                <span class="small text-danger" asp-validation-for="LastName">
+
+                </span>
+            </div>
+            
+            <div class="mb-3">
+                <label asp-for="Password" class="form-label"></label>
+                <input asp-for="Password" class="form-control" placeholder="Le nom du employée">
+                <span class="small text-danger" asp-validation-for="Password">
+
+                </span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="confirmPassword" class="form-label"></label>
+                <input asp-for="confirmPassword" class="form-control" placeholder="Le nom du employée">
+                <span class="small text-danger" asp-validation-for="confirmPassword">
+
+                </span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Age" class="form-label"></label>
+                <input asp-for="Age" class="form-control" placeholder="Le nom du employée">
+                <span class="small text-danger" asp-validation-for="Age">
+
+                </span>
+            </div>
+            @*<div class="mb-3">
+            <div class="form-control col-12">
+                <label asp-for="Photo"></label>
+                <div class="input-group">
+                    <div class="input-group">
+                        <span class="input-group-text" id="inputGroupeFileAdd01">Upload</span>
+                    </div>
+                    <div  class="c">
+                        <input accept="image/*" asp-for="Photo" class="custom-file-input" id="inputGroupeFileAdd01" />
+                        <label  class="custom-file-label" for="inputGroupeFileAdd01"></label>
+
+                    </div>
+                </div>
+            </div>
+        </div>*@
+            <div class="mb-3">
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Validate</button>
+
+                </div>
+            </div>
+            <div class="text text-danger" asp-validation-summary="All"></div>
+        </fieldset>
+    </form>
+
+</div>
+@section CreateSectionJS{
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#inputGroupeFile01").on("change", function () {
+                var inputPhoto = $(this).val();
+                console.log(inputPhoto);
+            });
+
+        })
+    </script>
+}

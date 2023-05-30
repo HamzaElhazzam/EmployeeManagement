@@ -1,0 +1,78 @@
+﻿@model EmployeeEditViewModel
+@{
+    ViewBag.Title = "create";
+    var photoPathName = "/images/" + (Model.PhotoPath ?? "emp.png");
+
+}
+<div class="my-5">
+
+    <form enctype="multipart/form-data" asp-action="Update" asp-controller="Employee" method="post">
+        <fieldset>
+            <legend>Disabled fieldset example</legend>
+            <input hidden asp-for="Id" />
+            <input hidden asp-for="PhotoPath" />
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label"></label>
+                <input type="text" asp-for="Name" class="form-control" placeholder="Le prénom du employée...">
+                <span class="small text-danger" asp-validation-for="Name">
+
+                </span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label"></label>
+                <input type="text" asp-for="Email" class="form-control" placeholder="Le nom du employée">
+                <span class="small text-danger" asp-validation-for="Email">
+
+                </span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Departement" class="form-label"></label>
+                <select class="form-select"
+                        asp-for="Departement"
+                        asp-items="Html.GetEnumSelectList<Departement>()">
+                    <option value="">
+                        select one...
+                    </option>
+                </select>
+                <span class="small text-danger" asp-validation-for="Departement">
+
+                </span>
+            </div>
+            <div class="mb-3">
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <input class="form-control" asp-for="Photo" id="inputGroupeFileAdd01"  accept="image/*" type="file">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-row">
+                <div class="form-group">
+                    <div class="input-group">
+                        @if (Model.PhotoPath != null)
+                        {
+                            <img style="width:30%; height:30%;" src="@photoPathName" asp-append-version="true" class="card-img-top" alt="@Model.Name" />
+
+                        }
+                        else
+                        {
+                            <span class="alert alert-info">Image not set !</span>
+                        }
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-12">
+                    <button type="submit" class="btn btn-primary">Update Employee</button>
+                    <a asp-action="index" asp-controller="Employee" class="btn btn-dark my-3">Cancel</a>
+
+                </div>
+            </div>
+        </fieldset>
+    </form>
+
+</div>

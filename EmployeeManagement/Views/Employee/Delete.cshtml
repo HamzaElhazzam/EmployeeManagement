@@ -1,0 +1,50 @@
+﻿@{ 
+    ViewBag.Title = "Delete";
+}
+@model Employee
+<div class="my-5">
+
+    <form enctype="multipart/form-data" asp-action="Delete" asp-controller="Employee" method="post">
+        <fieldset>
+            <legend>Are you sure you want Delete this employee ?</legend>
+
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label"></label>
+                <input type="text" asp-for="Name" class="form-control" disabled placeholder="Le prénom du employée...">
+                <span class="small text-danger" asp-validation-for="Name">
+
+                </span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label"></label>
+                <input type="text" asp-for="Email" disabled class="form-control" placeholder="Le nom du employée">
+                <span class="small text-danger" asp-validation-for="Email">
+
+                </span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Departement" class="form-label"></label>
+                <select disabled class="form-select"
+                        asp-for="Departement"
+                        asp-items="Html.GetEnumSelectList<Departement>()">
+                    <option value="" >
+                        select one...
+                    </option>
+                </select>
+                <span class="small text-danger" asp-validation-for="Departement">
+
+                </span>
+            </div>
+            
+
+            <div class="mb-3">
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Delete</button>
+                    <a class="btn btn-secondary" asp-controller="Employee" asp-action="Index">Cancel</a>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+
+
+</div>

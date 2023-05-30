@@ -1,0 +1,27 @@
+﻿@model Employee
+@{
+    ViewBag.Title = "test";
+    var photoPathName = "/images/" + (Model.PhotoPath ?? "emp.png");
+
+}
+<div class="row my-5">
+    <div class="col-12 mx-auto">
+        <div class="card">
+            <h5 class="card-header text-danger display-5 text-center">@Model.Name</h5>
+            @*<input class="card-header text-danger display-5 text-center" type="text"  asp-for="Name"  />*@
+            <div class="text-center">
+                <img style="width:30%; height:30%;" src="@photoPathName" class="card-img-top" alt="@Model.Name" />
+            </div>
+            <div class="card-body text-center">
+
+                <p class="card-text display-4">
+                    <span class="text-black text-info">@Model.Departement</span> <br />
+                    @Model.Email
+                </p>
+                <a asp-action="Index" class="btn btn-dark btn-sm">Back To List</a>
+                <a asp-action="Update" asp-route-id="@Model.Id" class="btn btn-dark btn-sm">Update Employee</a>
+            </div>
+        </div>
+    </div>
+</div>
+d

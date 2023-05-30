@@ -1,0 +1,138 @@
+﻿@model AccountEditUserViewModel
+@{ 
+    ViewBag.Title = "Edit User";
+}
+<form enctype="multipart/form-data" method="post">
+    <fieldset>
+        <legend>Disabled fieldset example</legend>
+        <div class="mb-3">
+            <label asp-for="Id" class="form-label"></label>
+            <input asp-for="Id" class="form-control" disabled placeholder="">
+            <span class="small text-danger" asp-validation-for="Id">
+
+            </span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="FirstName" class="form-label"></label>
+            <input asp-for="FirstName" class="form-control" placeholder="">
+            <span class="small text-danger" asp-validation-for="FirstName">
+
+            </span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="LastName" class="form-label"></label>
+            <input asp-for="LastName" class="form-control" placeholder="">
+            <span class="small text-danger" asp-validation-for="LastName">
+
+            </span>
+        </div>
+
+
+
+        <div class="mb-3">
+            <label asp-for="Age" class="form-label"></label>
+            <input asp-for="Age" class="form-control" placeholder="">
+            <span class="small text-danger" asp-validation-for="Age">
+
+            </span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Email" class="form-label"></label>
+            <input asp-for="Email" class="form-control" placeholder="">
+            <span class="small text-danger" asp-validation-for="Email">
+
+            </span>
+        </div>
+
+        <div class="mb-3">
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Validate</button>
+                <a class="btn btn-danger">Cancel</a>
+            </div>
+        </div>
+
+        @if (Model.Roles.Count == 0)
+        {
+            <div class="card">
+                <div class="card-header">
+                    <span class="display-4">User Roles</span>
+                </div>
+                <p class="card-body text-info text-center fw-bold">
+                    <span>None at the moment</span>
+                </p>
+                <div class="text-white card-footer">
+                    <a asp-action="ListRoles" asp-controller="Administration" class="btn btn-sm btn-primary">Roles</a>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="row">
+                <div class="col-md-6 col-12 mx-auto">
+                    <div class="card">
+                        <div class="card-header text-center">
+                            <span class="display-4">User Roles</span>
+                        </div>
+                        <div class="card-body text-capitalize">
+                            <ol class="active">
+                                @for (int i = 0; i < Model.Roles.Count; i++)
+                                {
+                                    <li>
+                                        <label disabled class="mx-1">
+                                            @Model.Roles[i]
+                                        </label>
+                                    </li>
+                                }
+                            </ol>
+                        </div>
+                        <div class="text-white card-footer">
+                            <a asp-action="ListRoles" asp-controller="Administration" class="btn btn-sm btn-primary">Manage Roles</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        @if (Model.Claims.Count == 0)
+        {
+            <div class="card">
+                <div class="card-header">
+                    <span class="display-4">User Roles</span>
+                </div>
+                <p class="card-body text-info text-center fw-bold">
+                    <span>None at the moment</span>
+                </p>
+                <div class="text-white card-footer">
+                    <a asp-action="ListRoles" asp-controller="Administration" class="btn btn-sm btn-primary">Roles</a>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="row my-2">
+                <div class="col-md-6 col-12 mx-auto">
+                    <div class="card">
+                        <div class="card-header text-center">
+                            <span class="display-4">User Roles</span>
+                        </div>
+                        <div class="card-body text-capitalize">
+                            <ol class="active">
+                                @for (int i = 0; i < Model.Claims.Count; i++)
+                                {
+                                    <li>
+                                        <label disabled class="mx-1">
+                                            @Model.Claims[i]
+                                        </label>
+                                    </li>
+                                }
+                            </ol>
+                        </div>
+                        <div class="text-white card-footer">
+                            <a asp-action="ListRoles" asp-controller="Administration" class="btn btn-sm btn-primary">Manage Roles</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="text text-danger" asp-validation-summary="All"></div>
+    </fieldset>
+</form>

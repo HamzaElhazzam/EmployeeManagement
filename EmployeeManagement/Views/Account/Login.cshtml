@@ -1,0 +1,46 @@
+﻿@model AccoutnLoginViewModel
+@{
+    ViewBag.Title = "Login User";
+}
+@{
+    var returnUrl = Context.Request.Query["ReturnUrl"];
+}
+<h2 class="my-5 text-center">
+    User Login
+</h2>
+<div class="my-5">
+
+
+    <form asp-route-returnurl="@returnUrl" method="post">
+
+        <div class="mb-3">
+            <label asp-for="Email" class="form-label"></label>
+            <input asp-for="Email" class="form-control" placeholder="Email">
+            <span class="small text-danger" asp-validation-for="Email">
+
+            </span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Password" class="form-label"></label>
+            <input asp-for="Password" class="form-control" placeholder="Password">
+            <span class="small text-danger" asp-validation-for="Password">
+
+            </span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Remember"></label>
+            <input asp-for="Remember" class="form-check-input">
+        </div>
+
+        <div class="mb-3">
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Validate</button>
+
+            </div>
+        </div>
+        <div class="text text-danger" asp-validation-summary="All"></div>
+
+    </form>
+
+</div>
